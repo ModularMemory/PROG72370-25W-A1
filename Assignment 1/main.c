@@ -11,10 +11,18 @@
 #define LETTER_COUNT 26
 
 /// <summary>
+/// Generates a random number between min_incl to max_excl - 1
+/// </summary>
+static unsigned int rand_range(unsigned int min_incl, unsigned int max_excl) {
+    assert(min_incl < max_excl);
+    return rand() % (max_excl - min_incl) + min_incl;
+}
+
+/// <summary>
 /// Generates a random number or letter
 /// </summary>
 static char get_random_alphanumeric(void) {
-    char c = rand() % (NUMBER_COUNT + LETTER_COUNT * 2);
+    char c = (char)rand_range(0, NUMBER_COUNT + LETTER_COUNT * 2); // 0-9, A-Z, a-z
 
     if (c < NUMBER_COUNT) {
         return c + '0'; // Within 0-9, number
@@ -28,7 +36,7 @@ static char get_random_alphanumeric(void) {
 
     c -= LETTER_COUNT;
 
-    return c = 'a'; // >= 36, lowercase letter
+    return c + 'a'; // >= 36, lowercase letter
 }
 
 /// <summary>
@@ -43,8 +51,8 @@ static user_t create_random_user(void) {
         name[i] = get_random_alphanumeric();
     }
 
-    unsigned int level = rand() % 59 + 1; // 1-60
-    user_faction_t faction = (user_faction_t)(rand() % (GREEN + 1)); // red, blue, green
+    unsigned int level = rand_range(1, 61); // 1-60
+    user_faction_t faction = (user_faction_t)rand_range(RED, GREEN + 1); // red, blue, green
 
     return create_user(name, level, faction);
 }
