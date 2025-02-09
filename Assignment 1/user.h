@@ -3,7 +3,7 @@
 /// <summary>
 /// A user's faction
 /// </summary>
-typedef enum user_faction {
+typedef enum {
     RED,
     BLUE,
     GREEN
@@ -14,7 +14,7 @@ typedef enum user_faction {
 /// <summary>
 /// Represents a user
 /// </summary>
-typedef struct user {
+typedef struct {
     char name[USERNAME_LEN];
     unsigned int level;
     user_faction_t faction;
