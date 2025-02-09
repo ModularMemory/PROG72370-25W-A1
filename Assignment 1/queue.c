@@ -50,12 +50,14 @@ bool enqueue(Queue queue, user_t user) {
         
         queue->head = node;
         queue->tail = node;
+
         return true;
     }
     
     // Queue has contents, point the tail to the new node and set the tail
     queue->tail->next = node;
     queue->tail = node;
+
     return true;
 }
 
