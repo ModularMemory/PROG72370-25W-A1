@@ -6,7 +6,10 @@
 #include "queue.h"
 #include "user.h"
 
-#define RANDOM_USERNAME_LEN 25
+// The length of random user usernames
+#define RANDOM_USER_USERNAME_LEN 25
+
+// There are 10 numbers and 26 letters
 #define NUMBER_COUNT 10
 #define LETTER_COUNT 26
 
@@ -43,11 +46,12 @@ static char get_random_alphanumeric(void) {
 /// Creates a user struct with random statistics
 /// </summary>
 static user_t create_random_user(void) {
-    char name[USERNAME_LEN] = { 0 };
+    // Ensure that the random user username length fits in the username struct
+    assert(RANDOM_USER_USERNAME_LEN < USERNAME_LEN);
 
     // Create a random name
-    assert(RANDOM_USERNAME_LEN < USERNAME_LEN);
-    for (int i = 0; i < RANDOM_USERNAME_LEN; i++) {
+    char name[USERNAME_LEN] = { 0 };
+    for (int i = 0; i < RANDOM_USER_USERNAME_LEN; i++) {
         name[i] = get_random_alphanumeric();
     }
 
