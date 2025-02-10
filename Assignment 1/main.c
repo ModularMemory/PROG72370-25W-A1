@@ -11,7 +11,7 @@
 #define LETTER_COUNT 26
 
 /// <summary>
-/// Generates a random number between min_incl to max_excl - 1
+/// Generates a random number inclusively between min_incl and max_excl - 1
 /// </summary>
 static unsigned int rand_range(unsigned int min_incl, unsigned int max_excl) {
     assert(min_incl < max_excl);
